@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'pets/style.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<h1>Animals looking for a home</h1>
+
+{% for animal in animals %}
+    <div class="animal-card">
+        <h2> {{ animal.name }}  </h2>
+        <img src="{{ animal.photo.url }}" alt="Photo of {{ animal.name }}">
+        <p> {{ animal.species }} | {{ animal.approx_age }} | {{ animal.get_size_display }}</p>
+        <p> {{ animal.story }}</p>
+        <a class="whatsapp-btn" href="https://wa.me/{{ animal.shelter.contact_whatsapp }}?text={{ "Hi, I'm interested in adopting "|urlencode }}{{ animal.name|urlencode }}"> Ask about {{ animal.name}} </a>
+    </div>
+{% endfor %}
