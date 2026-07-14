@@ -125,6 +125,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 cloudinary.config(secure=True)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STORAGES= {
     "default": {
         "BACKEND":"django.core.files.storage.FileSystemStorage",
