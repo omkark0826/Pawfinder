@@ -32,6 +32,18 @@ h2 {
     border-radius: 8px;
 }
 
+.instagram-btn {
+    display: inline-block;
+    background: #E1306C;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-right: 10px
+}
+
 .whatsapp-btn {
     display: inline-block;
     background: #25D366;
@@ -39,6 +51,7 @@ h2 {
     padding: 12px 20px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: 500px;
+    font-weight: 500;
     margin-top: 10px;
+    margin-right: 10px;
 }

@@ -5,7 +5,8 @@ from django.db import models
 class Shelter(models.Model):
     name = models.CharField(max_length=100)
     area = models.CharField(max_length=100)
-    contact_whatsapp = models.CharField(max_length=15)
+    instagram = models.CharField(max_length = 100, blank = True)
+    contact_whatsapp = models.CharField(max_length=15, blank = True)
     def __str__(self):
         return self.name
 
