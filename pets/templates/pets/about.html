@@ -1,0 +1,14 @@
+{% extends 'pets/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>About Pawfinder</h1>
+
+<div class="about-card">
+    <img src="{% static 'pets/catpuppyfamily.jpg' %}" alt="Cute cat and puppy with loving family photo" class="about-card-image">
+    <p>Our goal at Pawfinder is to help stray and rescue animals of Navi Mumbai find their forever home and live a healthy and happy life.  </p>
+    <p>Shelters list animals in their care. If you're interested in adopting any animal please contact that specific shelter on their instagram or whatsapp.</p>
+    <p>No accounts, No messy logins, No forms or middlemen, just reach the shelter directly with the contact information provided and find your best buddy. </p>
+</div>
+{% endblock %}
+

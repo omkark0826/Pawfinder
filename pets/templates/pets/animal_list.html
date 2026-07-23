@@ -1,6 +1,5 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'pets/style.css' %}">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'pets/base.html' %}
+{% block content %}
 <h1>Animals looking for a home</h1>
 
 {% for animal in animals %}
@@ -8,6 +7,7 @@
         <h2> {{ animal.name }}  </h2>
         <img src="{{ animal.photo.url }}" alt="Photo of {{ animal.name }}">
         <p> {{ animal.species }} | {{ animal.approx_age }} | {{ animal.get_size_display }}</p>
+        <p class="shelter-info">{{ animal.shelter.name }} · {{ animal.shelter.area }} </p>
         <p> {{ animal.story }}</p>
         {% if animal.shelter.instagram %}
         <a class="instagram-btn" href="https://www.instagram.com/{{ animal.shelter.instagram }}"> Message on Instagram</a>
@@ -15,6 +15,7 @@
         {% if animal.shelter.contact_whatsapp %}
         <a class="whatsapp-btn" href="https://wa.me/{{ animal.shelter.contact_whatsapp }}?text={{ "Hi, I'm interested in adopting "|urlencode }}{{ animal.name|urlencode }}"> Ask about {{animal.name}} </a>
         {% endif %}
-
     </div>
+
 {% endfor %}
+{% endblock %}

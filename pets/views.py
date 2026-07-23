@@ -5,3 +5,6 @@ from .models import Animal
 def animal_list(request):
     animals = Animal.objects.filter(status= "available")
     return render(request, "pets/animal_list.html", {"animals": animals})
+
+def about(request):
+    return render(request, "pets/about.html")
