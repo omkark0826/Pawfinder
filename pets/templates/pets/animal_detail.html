@@ -1,0 +1,42 @@
+{% extends "pets/base.html" %}
+{% block content %}
+
+<div class="animal-card">
+    <h1>{{ animal.name }}</h1>
+    <img src="{{ animal.photo.url }}" alt="Photo of {{ animal.name }}" class="main-photo" id="mainPhoto">
+
+    <div class="thumbnails">
+        <img src="{{ animal.photo.url }}" alt="Photo of {{ animal.name }}" class="thumb">
+        {% for photo in animal.photos.all %}
+            <img src="{{ photo.image.url }}" alt="Photo of {{ animal.name }}" class="thumb">
+        {% endfor %}
+    </div>
+    <p>{{ animal.species }} | {{ animal.approx_age }} | {{ animal.get_size_display}}</p>
+    <p class="shelter-info">{{ animal.shelter.name }} · {{ animal.shelter.area }}</p>
+    <p>{{ animal.story }}</p>
+
+    {% if animal.shelter.instagram %}
+    <a class="instagram-btn" href="https://www.instagram.com/{{ animal.shelter.instagram }}/">Message on Instagram</a>
+    {% endif %}
+    {% if animal.shelter.contact_whatsapp %}
+    <a class="whatsapp-btn" href="https://wa.me/{{ animal.shelter.contact_whatsapp }}?text={{ "Hi, I'm interested in adopting "|urlencode }}{{ animal.name|urlencode }}">Ask about {{ animal.name }}</a>
+    {% endif %}
+</div>
+
+<script>
+    const mainPhoto = document.getElementById("mainPhoto");
+    const thumbs = document.querySelectorAll(".thumb");
+
+    thumbs.forEach(function (thumb) {
+        thumb.addEventListener("click", function () {
+            mainPhoto.src = thumb.src;
+
+            thumbs.forEach(function (t) {
+                t.classList.remove("active");
+            });
+            thumb.classList.add("active");
+        });
+    });
+    thumbs[0].classList.add("active");
+</script>
+{% endblock %}

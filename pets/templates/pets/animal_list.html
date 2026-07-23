@@ -3,19 +3,16 @@
 <h1>Animals looking for a home</h1>
 
 {% for animal in animals %}
-    <div class="animal-card">
-        <h2> {{ animal.name }}  </h2>
-        <img src="{{ animal.photo.url }}" alt="Photo of {{ animal.name }}">
-        <p> {{ animal.species }} | {{ animal.approx_age }} | {{ animal.get_size_display }}</p>
-        <p class="shelter-info">{{ animal.shelter.name }} · {{ animal.shelter.area }} </p>
-        <p> {{ animal.story }}</p>
-        {% if animal.shelter.instagram %}
-        <a class="instagram-btn" href="https://www.instagram.com/{{ animal.shelter.instagram }}"> Message on Instagram</a>
-        {% endif %}
-        {% if animal.shelter.contact_whatsapp %}
-        <a class="whatsapp-btn" href="https://wa.me/{{ animal.shelter.contact_whatsapp }}?text={{ "Hi, I'm interested in adopting "|urlencode }}{{ animal.name|urlencode }}"> Ask about {{animal.name}} </a>
-        {% endif %}
-    </div>
+    <a href="{% url 'animal_detail' animal.pk %}" class="card-link">
+        <div class="animal-card">
+            <h2> {{ animal.name }}  </h2>
+            <img src="{{ animal.photo.url }}" alt="Photo of {{ animal.name }}">
+            <p> {{ animal.species }} | {{ animal.approx_age }} | {{ animal.get_size_display }}</p>
+            <p class="shelter-info">{{ animal.shelter.name }} · {{ animal.shelter.area }} </p>
+            <p> {{ animal.story|truncatewords:20 }}</p>
+            <span class="view-link">View {{ animal.name }} →</span>
+        </div>
+    </a>
 
 {% endfor %}
 {% endblock %}

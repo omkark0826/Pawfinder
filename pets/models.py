@@ -10,8 +10,6 @@ class Shelter(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Animal(models.Model):
     name = models.CharField(max_length=100)
     species = models.CharField(max_length=50)
@@ -35,4 +33,9 @@ class Animal(models.Model):
     def __str__(self):
         return self.name
 
+class AnimalPhoto(models.Model):
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name="photos")
+    image = models.ImageField(upload_to="animals/")
 
+    def __str__(self):
+        return f"Photo of {self.animal.name}"

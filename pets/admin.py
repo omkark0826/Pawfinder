@@ -1,8 +1,15 @@
 from django.contrib import admin
-from .models import Animal
-from .models import Shelter
+from .models import Animal, Shelter, AnimalPhoto
 
-admin.site.register(Animal)
+class AnimalPhotoInline(admin.TabularInline):
+    model = AnimalPhoto
+    extra = 5
+    max_num = 5
+
+class AnimalAdmin(admin.ModelAdmin):
+    inlines = [AnimalPhotoInline]
+
+admin.site.register(Animal, AnimalAdmin)
 admin.site.register(Shelter)
 
 # Register your models here.
